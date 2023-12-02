@@ -1,0 +1,7 @@
+.env
+.DS_Store
+/dist
+/ignore
+/node_modules
+# local env files
+.env*.local

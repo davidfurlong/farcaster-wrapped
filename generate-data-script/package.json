@@ -1,0 +1,45 @@
+{
+  "name": "farcaster-indexer",
+  "author": "Greg Skriloff",
+  "license": "ISC",
+  "type": "module",
+  "engines": {
+    "node": "18"
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf ./dist",
+    "postinstall": "cp -rf ../../shared ./src/",
+    "start": "tsc && DOTENV_CONFIG_PATH=.env.production.local node --max-old-space-size=1500 --experimental-specifier-resolution=node ./dist/index.js",
+    "dev": "tsc && DOTENV_CONFIG_PATH=.env.development.local NODE_ENV=development node --max-old-space-size=1500 --experimental-specifier-resolution=node ./dist/index.js",
+    "dev:cachefeeds": "RUN_CACHE_FEEDS_ON_START=true NODE_ENV=development yarn run dev",
+    "dev:casts": "RUN_CASTS_ON_START=true NODE_ENV=development yarn run dev",
+    "dev:profiles": "RUN_PROFILES_ON_START=true NODE_ENV=development yarn run dev",
+    "debug:dev": "LOG_LEVEL=debug NODE_ENV=development yarn run dev",
+    "debug:dev:casts": "LOG_LEVEL=debug RUN_CASTS_ON_START=true NODE_ENV=development yarn run dev"
+  },
+  "dependencies": {
+    "@big-whale-labs/botcaster": "https://github.com/davidfurlong/botcaster",
+    "@sentry/node": "^7.17.3",
+    "@sentry/tracing": "^7.17.3",
+    "@standard-crypto/farcaster-js": "5.2.0",
+    "@supabase/supabase-js": "^1.35.6",
+    "aws-sdk": "^2.1258.0",
+    "axios": "1.1.3",
+    "bottleneck": "^2.19.5",
+    "canonicalize": "^1.0.8",
+    "dotenv": "^16.0.1",
+    "ethers": "^5.7.2",
+    "form-data": "^4.0.0",
+    "got": "^11.8.2",
+    "node-cron": "3.0.0",
+    "node-fetch": "^3.3.0",
+    "pg": "^8.8.0",
+    "pg-format": "^1.0.4",
+    "redis": "^4.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.12",
+    "typescript": "^4.8.3"
+  }
+}

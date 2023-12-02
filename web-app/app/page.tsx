@@ -18,6 +18,12 @@ export default function Home() {
       <p>
         Example: <Link href={`/2022/1214`}>@df</Link>
       </p>
+      <a
+        target="_blank"
+        href="https://github.com/davidfurlong/farcaster-wrapped/tree/main"
+      >
+        Github (MIT licensed)
+      </a>
     </main>
   );
 }

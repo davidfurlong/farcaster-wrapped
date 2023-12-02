@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 type FCProfile = any;
 type FCCast = any;
@@ -65,7 +65,7 @@ export type Wrapped2022 = Record<
   }
 >;
 
-export async function GET(req: NextApiRequest, context: { params: any }) {
+export async function GET(req: NextRequest, context: { params: any }) {
   const fid = context.params.fid;
   try {
     const wrappedJSON = require(`../rawfiles/wrapped2022-fid=${fid}.json`);
